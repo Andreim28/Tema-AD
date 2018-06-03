@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <time.h>
 #define noVertexMAX 100
-#define noVertex 5
+#define noVertex 10
 
 int Matrix[noVertexMAX][noVertexMAX];
 
@@ -28,7 +28,7 @@ void topSort(int Matrix[noVertexMAX][noVertexMAX])
     while(count<noVertex)
     {
         for(it1=0;it1<noVertex;it1++)
-            if(internal(Matrix,it1)==0&&visited[it1]==0)
+            if(internal_degree(Matrix,it1)==0&&visited[it1]==0)
         {
              printf("%d ",(it1));
              visited[it1]=1;
