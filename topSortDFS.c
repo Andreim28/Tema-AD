@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <time.h>
 #define noVertexMAX 100
-#define noVertex 8
+#define noVertex 10
 
 int Matrix[noVertexMAX][noVertexMAX];
 int sorted[noVertexMAX];
