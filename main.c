@@ -1,21 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <time.h>
-#define noVertexMAX 100
-#define noVertex 10
+#include "functions.h"
 
 int Matrix[noVertexMAX][noVertexMAX];
 int sorted[noVertexMAX];
 int visited[noVertexMAX];
-int noEl_sorted=0;
-
-int CheckAcyclic(int Matrix[noVertexMAX][noVertexMAX]);
-void randGraph(int Matrix[noVertexMAX][noVertexMAX]);
-int internal_degree(int Matrix[noVertexMAX][noVertexMAX], int vertex);
-void topSort_internal(int Matrix[noVertexMAX][noVertexMAX]);
-void print_Matrix_file(int Matrix[noVertexMAX][noVertexMAX]);
-void dfs(int it);
 
 int main(){
     randGraph(Matrix);
@@ -28,17 +15,18 @@ int main(){
     randMatrix = fopen("randMatrix.txt","r");
 
     print_Matrix_file(Matrix);
-    printf("Pentru a folosi prima metoda(Metoda gradului intern) introduceti 1\n");
-    printf("Pentru a folosi metoda a 2-a(Metoda folosind DFS) introduceti 2\n");
-    printf("Pentru a folosi ambele metode introduceti 3\n");
-    printf("Metoda:");
+    printf("To use the first method(internal degree method) type 1\n");
+    printf("To use the second method(dfs topological sort) type 2\n");
+    printf("To use both methods type 3\n");
+    printf("Method:");
     scanf("%d",&MethodSelector);
     while(MethodSelector!=1&&MethodSelector!=2&&MethodSelector!=3){
-        printf("Numarul introdus este gresit, introduceti 1/2/3 pentru a alege metoda dorita\n");
-        printf("Metoda:");
+        printf("The number is wrong, please type 1/2/3 to select your method\n");
+        printf("Method:");
         scanf("%d",&MethodSelector);
     }
     if(MethodSelector == 1){
+        printf("The topological sort using Internal degree method is:");
         for(it1 = 0; it1 < noVertex ; it1++){
             for(it2 = 0 ; it2 < noVertex ; it2++)
                 fscanf(randMatrix , "%d" , &Matrix[it1][it2]);
@@ -63,6 +51,7 @@ int main(){
         }
     }
     if(MethodSelector == 3){
+        printf("The topological sort using Internal degree method is:");
         for(it1 = 0; it1 < noVertex ; it1++){
             for(it2 = 0; it2 < noVertex ; it2++)
                 fscanf(randMatrix,"%d",&Matrix[it1][it2]);
@@ -164,34 +153,6 @@ void randGraph(int Matrix[noVertexMAX][noVertexMAX]){
     fprintf(randMatrix , "Number of vertices:%d" , noVertex);
     fclose(randMatrix);
 }
-int internal_degree(int Matrix[noVertexMAX][noVertexMAX],int vertex){
-    int it1;
-    int sum = 0;
-    for(it1 = 0; it1 < noVertex ; it1++){
-        sum = sum + Matrix[it1][vertex];
-    }
-    return sum;
-}
-void topSort_internal(int Matrix[noVertexMAX][noVertexMAX]){
-    int it1;
-    int it2;
-    int visited[noVertexMAX];
-    int count = 0;
-
-    printf("The topological sort using the internal degree method is:");
-    for(it1 = 0; it1 < noVertex ; it1++)
-        visited[it1] = 0;
-    while(count < noVertex){
-        for(it1 = 0 ; it1 < noVertex; it1++)
-            if(internal_degree(Matrix,it1) == 0 && visited[it1] == 0){
-                printf("%d ",(it1));
-                visited[it1] = 1;
-                for(it2 = 0 ; it2 < noVertex ; it2++)
-                    Matrix[it1][it2] = 0;
-                count++;
-            }
-    }
-}
 void print_Matrix_file(int Matrix[noVertexMAX][noVertexMAX]){
     int it1;
     int it2;
@@ -205,14 +166,4 @@ void print_Matrix_file(int Matrix[noVertexMAX][noVertexMAX]){
         printf("\n");
     }
     fclose(randMatrix);
-}
-void dfs(int it) {
-    int it1;
-    visited[it] = 1;
-    for (it1 = 0; it1 < noVertex; it1++) {
-        if (Matrix[it][it1] == 1 && visited[it1] == 0) {
-            dfs(it1);
-        }
-    }
-    sorted[noEl_sorted++] = it;
 }

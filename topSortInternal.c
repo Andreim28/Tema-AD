@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <time.h>
-#define noVertexMAX 100
-#define noVertex 10
-
-int Matrix[noVertexMAX][noVertexMAX];
+#include "functions.h"
 
 int internal_degree(int Matrix[noVertexMAX][noVertexMAX],int vertex)
 {
@@ -16,7 +9,7 @@ int internal_degree(int Matrix[noVertexMAX][noVertexMAX],int vertex)
     }
     return sum;
 }
-void topSort(int Matrix[noVertexMAX][noVertexMAX])
+void topSort_internal(int Matrix[noVertexMAX][noVertexMAX])
 {
     int it1;
     int it2;
@@ -37,19 +30,4 @@ void topSort(int Matrix[noVertexMAX][noVertexMAX])
              count++;
         }
     }
-}
-int main()
-{
-    int it1;
-    int it2;
-
-    FILE *randMatrix;
-    randMatrix = fopen("randMatrix.txt","r");
-
-    for(it1=0;it1<noVertex;it1++){
-        for(it2=0;it2<noVertex;it2++)
-            fscanf(randMatrix,"%d",&Matrix[it1][it2]);
-    }
-    topSort(Matrix);
-    fclose(randMatrix);
 }
