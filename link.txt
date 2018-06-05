@@ -1,1 +1,2 @@
 https://github.com/Andreim28/Tema-AD
+Proiectul final se afla in branch-ul FinalProject
