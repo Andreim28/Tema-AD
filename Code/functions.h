@@ -1,4 +1,8 @@
-
+///\file functions.h
+///\brief Docs project no. 7 - Doxygen
+///
+/// Developed by Marcu Andrei Cristian - 05.06.18
+//-----------------------------functions.h-------------------------------
 #ifndef MAIN_H_INCLUDED
 #define MAIN_H_INCLUDED
 
