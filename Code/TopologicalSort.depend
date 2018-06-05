@@ -14,3 +14,18 @@
 	<stdbool.h>
 	<time.h>
 
+1528192404 source:c:\users\marcu\documents\github\tema-ad\code\main.c
+	"functions.h"
+
+1528192404 c:\users\marcu\documents\github\tema-ad\code\functions.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+
+1528192404 source:c:\users\marcu\documents\github\tema-ad\code\topsortdfs.c
+	"functions.h"
+
+1528192404 source:c:\users\marcu\documents\github\tema-ad\code\topsortinternal.c
+	"functions.h"
+
