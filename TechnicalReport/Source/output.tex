@@ -416,8 +416,7 @@ void dfs(int it) {
 //-----------------------------topSortInternal.c-------------------------------
 #include "functions.h"
 
-int internal_degree(int Matrix[noVertexMAX][noVertexMAX],int vertex)
-{
+int internal_degree(int Matrix[noVertexMAX][noVertexMAX],int vertex){
     int it1;
     int sum=0;
     for(it1=0;it1<noVertex;it1++){
@@ -425,8 +424,7 @@ int internal_degree(int Matrix[noVertexMAX][noVertexMAX],int vertex)
     }
     return sum;
 }
-void topSort_internal(int Matrix[noVertexMAX][noVertexMAX])
-{
+void topSort_internal(int Matrix[noVertexMAX][noVertexMAX]){
     int it1;
     int it2;
     int visited[noVertexMAX];
